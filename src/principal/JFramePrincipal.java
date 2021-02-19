@@ -5,6 +5,8 @@
  */
 package principal;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author igorn
@@ -16,6 +18,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
      */
     public JFramePrincipal() {
         initComponents();
+    }
+    
+    private void setPainel(JPanel painel){
+        this.setContentPane(painel);
+        this.validate();
     }
 
     /**
@@ -30,23 +37,44 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        miCadProduto = new javax.swing.JMenuItem();
+        miEditarProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Arquivo");
+        jMenu1.setText("Produtos");
+
+        miCadProduto.setText("Cadastrar Produto");
+        miCadProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miCadProduto);
+
+        miEditarProduto.setText("Editar Produto");
+        miEditarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEditarProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miEditarProduto);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
@@ -61,21 +89,25 @@ public class JFramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miCadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadProdutoActionPerformed
+        JPanel painel = new Estoque.JPanelCadProduto();
+        setPainel(painel);
+    }//GEN-LAST:event_miCadProdutoActionPerformed
+
+    private void miEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditarProdutoActionPerformed
+        JPanel painel = new Estoque.JPanelEditarProduto();
+        setPainel(painel);
+    }//GEN-LAST:event_miEditarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,5 +150,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem miCadProduto;
+    private javax.swing.JMenuItem miEditarProduto;
     // End of variables declaration//GEN-END:variables
 }

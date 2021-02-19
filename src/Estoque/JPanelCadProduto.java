@@ -5,6 +5,8 @@
  */
 package Estoque;
 
+import principal.Principal;
+
 /**
  *
  * @author igorn
@@ -16,6 +18,7 @@ public class JPanelCadProduto extends javax.swing.JPanel {
      */
     public JPanelCadProduto() {
         initComponents();
+        tfCodProduto.setText(String.valueOf(Principal.estoque.size() + 1));
     }
 
     /**
@@ -27,19 +30,169 @@ public class JPanelCadProduto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbCodProduto = new javax.swing.JLabel();
+        tfCodProduto = new javax.swing.JTextField();
+        lbRotuloProd = new javax.swing.JLabel();
+        tfRotuloProd = new javax.swing.JTextField();
+        tfQtdEstoque = new javax.swing.JTextField();
+        lbQtdEstoque = new javax.swing.JLabel();
+        lbPrecoFabrica = new javax.swing.JLabel();
+        tfPrecoFabrica = new javax.swing.JTextField();
+        lbPrecoVenda = new javax.swing.JLabel();
+        tfPrecoVenda = new javax.swing.JTextField();
+        lbDescProd = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taDescProd = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        lbCodProduto.setText("Cód:");
+
+        tfCodProduto.setEditable(false);
+        tfCodProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCodProdutoActionPerformed(evt);
+            }
+        });
+
+        lbRotuloProd.setText("Rótulo do produto:");
+
+        lbQtdEstoque.setText("Quantidade em estoque: ");
+
+        lbPrecoFabrica.setText("Preço de Fábrica: ");
+
+        tfPrecoFabrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPrecoFabricaActionPerformed(evt);
+            }
+        });
+
+        lbPrecoVenda.setText("Preço de Venda: ");
+
+        lbDescProd.setText("Descrição do Produto: ");
+
+        taDescProd.setColumns(20);
+        taDescProd.setRows(5);
+        jScrollPane1.setViewportView(taDescProd);
+
+        jButton1.setText("Cancelar");
+
+        jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Salvar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbRotuloProd, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfRotuloProd))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbDescProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(466, 466, 466))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lbCodProduto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfCodProduto))
+                            .addComponent(lbPrecoFabrica))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfPrecoFabrica, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbPrecoVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(262, 262, 262))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(296, 296, 296)
+                                .addComponent(lbQtdEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfQtdEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCodProduto)
+                    .addComponent(tfCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfQtdEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbQtdEstoque))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbPrecoFabrica)
+                    .addComponent(tfPrecoFabrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPrecoVenda)
+                    .addComponent(tfPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbRotuloProd)
+                    .addComponent(tfRotuloProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbDescProd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(4, 4, 4))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCodProdutoActionPerformed
+
+    private void tfPrecoFabricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrecoFabricaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPrecoFabricaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbCodProduto;
+    private javax.swing.JLabel lbDescProd;
+    private javax.swing.JLabel lbPrecoFabrica;
+    private javax.swing.JLabel lbPrecoVenda;
+    private javax.swing.JLabel lbQtdEstoque;
+    private javax.swing.JLabel lbRotuloProd;
+    private javax.swing.JTextArea taDescProd;
+    private javax.swing.JTextField tfCodProduto;
+    private javax.swing.JTextField tfPrecoFabrica;
+    private javax.swing.JTextField tfPrecoVenda;
+    private javax.swing.JTextField tfQtdEstoque;
+    private javax.swing.JTextField tfRotuloProd;
     // End of variables declaration//GEN-END:variables
 }
