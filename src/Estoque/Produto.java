@@ -5,16 +5,20 @@ import principal.Principal;
 
 public class Produto {
     String rotulo, descricao;
-    float precoCusto, precoVenda;
+    float precoFabrica, precoVenda;
     int codProduto, qtdEstoque;
 
-    public Produto(String rotulo, String descricao, float precoCusto, float precoVenda, int qtdEstoque) {
+    public Produto(String rotulo, String descricao, float precoFabrica, float precoVenda, int qtdEstoque) {
         codProduto = Principal.estoque.size() + 1;
         this.rotulo = rotulo;
         this.descricao = descricao;
-        this.precoCusto = precoCusto;
+        this.precoFabrica = precoFabrica;
         this.precoVenda = precoVenda;
         this.qtdEstoque = qtdEstoque;
+    }
+    
+    public Produto() {
+        codProduto = Principal.estoque.size() + 1;
     }
 
     public String getRotulo() {
@@ -33,12 +37,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public float getPrecoCusto() {
-        return precoCusto;
+    public float getPrecoFabrica() {
+        return precoFabrica;
     }
 
-    public void setPrecoCusto(float precoCusto) {
-        this.precoCusto = precoCusto;
+    public void setPrecoFabrica(float precoFabrica) {
+        this.precoFabrica = precoFabrica;
     }
 
     public float getPrecoVenda() {
