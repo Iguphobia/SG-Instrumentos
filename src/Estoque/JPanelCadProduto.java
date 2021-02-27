@@ -6,6 +6,7 @@
 package Estoque;
 
 import principal.Principal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,7 @@ public class JPanelCadProduto extends javax.swing.JPanel {
      */
     public JPanelCadProduto() {
         initComponents();
-        tfCodProduto.setText(String.valueOf(Principal.estoque.size() + 1));
+        atualizarCodProduto();
     }
 
     /**
@@ -58,7 +59,7 @@ public class JPanelCadProduto extends javax.swing.JPanel {
 
         lbRotuloProd.setText("Rótulo do produto:");
 
-        lbQtdEstoque.setText("Quantidade em estoque: ");
+        lbQtdEstoque.setText("Qtd em estoque: ");
 
         lbPrecoFabrica.setText("Preço de Fábrica: ");
 
@@ -101,39 +102,39 @@ public class JPanelCadProduto extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbDescProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(476, 476, 476))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btSalvar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btLimpar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btCancelar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbPrecoFabrica)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfPrecoFabrica, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbPrecoVenda)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbQtdEstoque)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spQtdEstoque))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lbCodProduto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbRotuloProd, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfRotuloProd, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(tfRotuloProd))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lbPrecoFabrica)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfPrecoFabrica, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbPrecoVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbQtdEstoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spQtdEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btCancelar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,23 +175,78 @@ public class JPanelCadProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_tfPrecoFabricaActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfPrecoFabrica.setText("");
-        tfPrecoVenda.setText("");
-        tfRotuloProd.setText("");
-        taDescProd.setText("");
-        spQtdEstoque.setValue(0);
+        limparCampos();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Produto prod = new Produto();
-        prod.setRotulo(tfRotuloProd.getText());
-        
-        //TODO terminar parâmetros (campos numéricos dando erro)
-        
-        Principal.estoque.add(prod);
+        if (validarCampos() == false){
+            JOptionPane.showMessageDialog(null, "Os valores não foram salvos devido a campos inválidos.");
+        }
+        else {
+            salvarProduto();
+            limparCampos();
+            atualizarCodProduto();
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
-
+    private boolean validarCampos() {
+        int valSpinner;
+        
+        try { 
+            Float.parseFloat(tfPrecoFabrica.getText());
+        } catch ( NumberFormatException e ) {
+            JOptionPane.showMessageDialog(null, "Formato do preço de fábrica inválido!");
+            return false;
+        }
+        try { 
+            Float.parseFloat(tfPrecoVenda.getText());
+        } catch ( NumberFormatException e ) {
+            JOptionPane.showMessageDialog(null, "Formato do preço de venda inválido!");
+            return false;
+        }
+        try {
+            valSpinner = (Integer)spQtdEstoque.getValue();
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Campo de quantidade de estoque inválido");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private void salvarProduto(){
+        Produto prod = new Produto();
+        
+        //O CommitEdit() atualiza o valor do Spinner. Sem ele, o valor passado pro setQtdEstoque() fica inconsistente.
+        try {
+            spQtdEstoque.commitEdit();
+        } catch ( java.text.ParseException e ) {
+            
+        }
+        
+        prod.setRotulo(tfRotuloProd.getText());
+        prod.setPrecoFabrica(Float.parseFloat(tfPrecoFabrica.getText()));
+        prod.setPrecoVenda(Float.parseFloat(tfPrecoVenda.getText()));
+        prod.setQtdEstoque((Integer)spQtdEstoque.getValue());
+        prod.setDescricao(taDescProd.getText());
+        
+        Principal.estoque.add(prod);
+        
+        JOptionPane.showMessageDialog(null, "Produto salvo com sucesso!");
+    }
+    
+        private void limparCampos() {
+            tfPrecoFabrica.setText("");
+            tfPrecoVenda.setText("");
+            tfRotuloProd.setText("");
+            taDescProd.setText("");
+            spQtdEstoque.setValue(0);
+        }
+        
+        private void atualizarCodProduto(){
+            tfCodProduto.setText(String.valueOf(Principal.estoque.size() + 1));
+        }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btLimpar;
