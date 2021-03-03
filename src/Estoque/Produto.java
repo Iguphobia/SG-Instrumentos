@@ -1,15 +1,17 @@
 package Estoque;
 
 import java.util.ArrayList;
-import principal.Principal;
+import Principal.Principal;
+import static Principal.Principal.estoque;
 
 public class Produto {
     String rotulo, descricao;
     float precoFabrica, precoVenda;
     int codProduto, qtdEstoque;
-
+    
     public Produto(String rotulo, String descricao, float precoFabrica, float precoVenda, int qtdEstoque) {
-        codProduto = Principal.estoque.size() + 1;
+        Produto ultimoProd = (Produto)estoque.get(estoque.size());
+        codProduto = ultimoProd.getCodProduto() + 1;
         this.rotulo = rotulo;
         this.descricao = descricao;
         this.precoFabrica = precoFabrica;
