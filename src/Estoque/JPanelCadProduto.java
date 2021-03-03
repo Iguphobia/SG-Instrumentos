@@ -5,7 +5,7 @@
  */
 package Estoque;
 
-import principal.Principal;
+import Principal.Principal;
 import javax.swing.JOptionPane;
 
 /**
