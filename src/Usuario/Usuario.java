@@ -9,6 +9,18 @@ public class Usuario {
     String Endereço = "";
     boolean Admin = false;
 
+    public String getSenha() {
+        return Senha;
+    }
+
+    public void setSenha(String Senha) {
+        this.Senha = Senha;
+    }
+    
+    public Usuario() {
+        
+    }
+    
     public Usuario(String username, String senha, String nome, String telefone, String endereco, boolean admin) {
         this.Username = username;
         this.Senha = senha;
