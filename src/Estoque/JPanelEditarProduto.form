@@ -16,11 +16,55 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbDescProd" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cbProdutos" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lbCodProduto" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfCodProduto" min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lbRotuloProduto" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="tfRotuloProduto" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbPrecoFabrica" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfPrecoFabrica" min="-2" pref="65" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbPrecoVenda" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfPrecoVenda" min="-2" pref="65" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbQtdEstoque" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="spQtdEstoque" min="-2" pref="62" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="508" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="cbProdutos" pref="532" max="32767" attributes="0"/>
+              <Component id="btExcluir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btCancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -33,7 +77,33 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbProdutos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="319" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbRotuloProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfRotuloProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbPrecoFabrica" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPrecoFabrica" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbQtdEstoque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spQtdEstoque" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="lbDescProd" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="197" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,6 +131,91 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbCodProduto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;d. Protuto:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbRotuloProduto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="R&#xf3;tulo do Produto:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfCodProduto">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCodProdutoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfRotuloProduto">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbQtdEstoque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quantidade em estoque: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbPrecoFabrica">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pre&#xe7;o de F&#xe1;brica: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPrecoFabrica">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPrecoFabricaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbPrecoVenda">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pre&#xe7;o de Venda: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPrecoVenda">
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spQtdEstoque">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbDescProd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o do Produto: "/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="taDescProd">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JToggleButton" name="btCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btExcluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExcluirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btSalvar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
