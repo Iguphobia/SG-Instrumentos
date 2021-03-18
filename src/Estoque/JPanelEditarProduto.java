@@ -5,10 +5,12 @@
  */
 package Estoque;
 
+import Database.AcessoDB;
 import java.util.ArrayList;
 import Principal.Principal;
-import static Principal.Principal.estoque;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -25,15 +27,24 @@ public class JPanelEditarProduto extends javax.swing.JPanel {
     }
     
     private void atualizarComboBox(){
-        ArrayList cbOpcoes = new ArrayList();
-        String opcao;
         cbProdutos.removeAll();
-        cbOpcoes.add("Selecione aqui o produto");
+        ArrayList cbOpcoes = new ArrayList();
+        String opcoes;
         
-        for (int i = 0; i < Principal.estoque.size(); i++){
-            Produto p = (Produto)Principal.estoque.get(i);
-            opcao = p.getCodProduto() + " - " + p.getRotulo();
-            cbOpcoes.add(opcao);
+        AcessoDB db = new AcessoDB();
+        ResultSet rsProdutos = db.consultar("SELECT codProduto, rotulo FROM produto");
+        
+        try {
+            while (rsProdutos.next()) {
+                opcoes = rsProdutos.getInt("codProduto") + " - " + rsProdutos.getString("rotulo");
+                cbOpcoes.add(opcoes);
+            }
+        } 
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Houve um erro ao tentar atualizar a lista de produtos: " + e.toString());
+        }
+        finally {
+            db.fecharConexao();
         }
         
         cbProdutos.setModel(new javax.swing.DefaultComboBoxModel(cbOpcoes.toArray()));
@@ -203,13 +214,7 @@ public class JPanelEditarProduto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProdutosActionPerformed
-        if (cbProdutos.getSelectedIndex() != 0){ 
-            atualizarCampos(getProduto());
-        }
-        else {
-            limparCampos();
-        }
-        atualizarComboBox();
+        atualizarCampos(getProduto());
     }//GEN-LAST:event_cbProdutosActionPerformed
 
     private void tfCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodProdutoActionPerformed
@@ -221,13 +226,23 @@ public class JPanelEditarProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_tfPrecoFabricaActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Produto prod = getProduto();
+        Produto prod = new Produto(Integer.parseInt(tfCodProduto.getText()));
         
         prod.setRotulo(tfRotuloProduto.getText());
         prod.setQtdEstoque((int)spQtdEstoque.getValue());
         prod.setPrecoFabrica(Float.parseFloat(tfPrecoFabrica.getText()));
         prod.setPrecoVenda(Float.parseFloat(tfPrecoVenda.getText()));
         prod.setDescricao(taDescProd.getText());
+        
+        try{
+            prod.atualizarProduto();
+            JOptionPane.showMessageDialog(null, "Produto salvo com sucesso!");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Houve um erro ao salvar produto: " + e.toString());
+        }
+        
+        atualizarComboBox();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
@@ -237,7 +252,8 @@ public class JPanelEditarProduto extends javax.swing.JPanel {
         else {
             int excluir = JOptionPane.showConfirmDialog(null, "Você está prestes a excluir um item do estoque. Deseja continuar?", "Excluir", JOptionPane.YES_NO_OPTION);
             if (excluir == 0){
-                //TODO código de remoção de item de Principal.estoque
+                AcessoDB db = new AcessoDB();
+                db.executar("DELETE FROM produto WHERE codProduto = " + tfCodProduto.getText() + ";");
             }
         }
     }//GEN-LAST:event_btExcluirActionPerformed
@@ -245,15 +261,10 @@ public class JPanelEditarProduto extends javax.swing.JPanel {
     private Produto getProduto() {
         String opcao = (String)cbProdutos.getSelectedItem();
         String[] cod = opcao.split(" ", 2);
-        
-        for (int i = 0; i < estoque.size(); i++){
-            Produto p = (Produto)estoque.get(i);
-            if (p.getCodProduto() == Integer.parseInt(cod[0])) {
-                return p;
-            }
-        }
-        return null;
+        Produto prod = new Produto(Integer.parseInt(cod[0]));
+        return prod;
     }
+    
     private void atualizarCampos(Produto prod){
         tfCodProduto.setText(prod.getCodProduto() +"");
         tfRotuloProduto.setText(prod.getRotulo());
