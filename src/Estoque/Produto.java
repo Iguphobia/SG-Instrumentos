@@ -1,17 +1,17 @@
 package Estoque;
 
-import java.util.ArrayList;
+import Database.AcessoDB;
 import Principal.Principal;
-import static Principal.Principal.estoque;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Produto {
+
     String rotulo, descricao;
     float precoFabrica, precoVenda;
     int codProduto, qtdEstoque;
-    
+
     public Produto(String rotulo, String descricao, float precoFabrica, float precoVenda, int qtdEstoque) {
-        Produto ultimoProd = (Produto)estoque.get(estoque.size());
-        codProduto = ultimoProd.getCodProduto() + 1;
         this.rotulo = rotulo;
         this.descricao = descricao;
         this.precoFabrica = precoFabrica;
@@ -19,8 +19,34 @@ public class Produto {
         this.qtdEstoque = qtdEstoque;
     }
     
-    public Produto() {
-        codProduto = Principal.estoque.size() + 1;
+    public Produto(String rotulo, String descricao, float precoFabrica, float precoVenda, int qtdEstoque, int codProduto) {
+        this.codProduto = codProduto;
+        this.rotulo = rotulo;
+        this.descricao = descricao;
+        this.precoFabrica = precoFabrica;
+        this.precoVenda = precoVenda;
+        this.qtdEstoque = qtdEstoque;
+    }
+    
+    public Produto (int codProduto) {
+        AcessoDB db = new AcessoDB();
+        
+        String query = "SELECT * FROM produto WHERE codProduto = " + codProduto + ";";
+        ResultSet dadosProduto = db.consultar(query);
+        
+        try {
+            dadosProduto.next();
+            this.rotulo = dadosProduto.getString("rotulo");
+            this.descricao = dadosProduto.getString("descricao");
+            this.precoFabrica = dadosProduto.getFloat("precoFabrica");
+            this.precoVenda = dadosProduto.getFloat("precoVenda");
+            this.qtdEstoque = dadosProduto.getInt("qtdEstoque");
+        }
+        catch (SQLException e){
+            System.out.println("Erro ao buscar produto: " + e.toString());
+        }
+        
+        db.fecharConexao();
     }
 
     public String getRotulo() {
@@ -62,8 +88,32 @@ public class Produto {
     public void setQtdEstoque(int qtdEstoque) {
         this.qtdEstoque = qtdEstoque;
     }
-    
+
     public int getCodProduto() {
         return codProduto;
+    }
+
+    public void novoProduto() {
+        String query = "INSERT INTO produto VALUES(null, '" + this.getRotulo() + "', "
+                + "'" + this.getDescricao() + "', "
+                + "" + this.getPrecoFabrica() + ", "
+                + "" + this.getPrecoVenda() + ", "
+                + "" + this.getQtdEstoque() + ");";
+        
+        AcessoDB db = new AcessoDB();
+        db.executar(query);
+    }
+    
+    public void atualizarProduto() {
+        String query = "UPDATE produto SET "
+                + "rotulo = '" + this.rotulo + "', "
+                + "descricao = '" + this.descricao + "', "
+                + "precoFabrica = " + this.precoFabrica + ", "
+                + "precoVenda = " + this.precoVenda + ", "
+                + "qtdEstoque = " + this.qtdEstoque + " "
+                + "WHERE codProduto = " + this.codProduto + ";";
+        
+        AcessoDB db = new AcessoDB();
+        db.executar(query);
     }
 }
