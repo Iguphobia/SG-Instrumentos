@@ -42,7 +42,6 @@ public class JPanelCadProduto extends javax.swing.JPanel {
         lbDescProd = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDescProd = new javax.swing.JTextArea();
-        btCancelar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         spQtdEstoque = new javax.swing.JSpinner();
@@ -75,8 +74,6 @@ public class JPanelCadProduto extends javax.swing.JPanel {
         taDescProd.setColumns(20);
         taDescProd.setRows(5);
         jScrollPane1.setViewportView(taDescProd);
-
-        btCancelar.setText("Cancelar");
 
         btLimpar.setText("Limpar");
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,9 +123,7 @@ public class JPanelCadProduto extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btCancelar)))
+                        .addComponent(btLimpar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,7 +149,6 @@ public class JPanelCadProduto extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCancelar)
                     .addComponent(btLimpar)
                     .addComponent(btSalvar))
                 .addGap(4, 4, 4))
@@ -234,7 +228,6 @@ public class JPanelCadProduto extends javax.swing.JPanel {
         }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCancelar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JScrollPane jScrollPane1;
